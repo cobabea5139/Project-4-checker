@@ -63,9 +63,9 @@ Q61::True
 Q62::True
 Q63::True
 Q64::The more supports, the less each individual beam takes, load wise. Displacements are also lower generally as the number of supports increases. The one thing we lose with the addition of more supports, is in the cost of materials and the efficiency of the beams. They are not being used to their full potential when the forces they experience are so far from the max forces they can endure.
-Q65::
-Q66::
-Q67::
-Q68::
-Q69::
-Q70::
+Q65::True
+Q66::I added two pins to the bottom truss and was able to change all the members to Steel ASTM A36 without reaching failure
+Q67::There was no indication of failure and despite a buckling failure load of 148 on a beam 13 and 15, they did not receive anywhere near that level of force
+Q68::I minimized the amount of material by changing all members to Steel ASTM A36
+Q69::I included extra pins to represent an extra support going at a 45 degree angle from the regular columns like might be seen in a familiar structure and then reduced the cross sectional area of each member until I saw no cause for failure in the truss. These changes form a more rigid connection between the supporting columns and the trusses themselves and the decreased cross sectional area decreases self weight and cost of materials.
+Q70::True

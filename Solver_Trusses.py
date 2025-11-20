@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jul 14 14:34:19 2021
+
+@author: kendrick
+"""
+
+import numpy as np
+import math
+
+# compute unknown displacements 
+def ComputeDisplacements(K, F, n_unknowns):
+    # extract submatrix of unknowns
+    K11 = K[0:n_unknowns,0:n_unknowns]
+    F1 = F[0:n_unknowns]
+    
+    d = np.linalg.solve(K11,F1)
+    
+    return d
+
+# postprocess the forces at known displacement nodes
+def PostprocessReactions(K, d, F, n_unknowns, nodes):
+    # These are computed net forces and do not
+    # take into account external loads applied
+    # at these nodes
+    F = np.matmul(K[n_unknowns:,0:n_unknowns], d)
+    
+    # Postprocess the reactions
+    for node in nodes:
+        if node.xidx >= n_unknowns:
+            node.AddReactionXForce(F[node.xidx-n_unknowns][0] - node.xforce_external)
+        if node.yidx >= n_unknowns:
+            node.AddReactionYForce(F[node.yidx-n_unknowns][0] - node.yforce_external)
+        
+    return F
+
+# determine internal member loads
+def ComputeMemberForces(bars):
+    # COMPLETE THIS FUNCTION
+    for bar in bars:
+        (lambdax,lambday) = bar.LambdaTerms()
+        node1 = bar.init_node
+        node2 = bar.end_node
+        delta = -1 * lambdax * node1.xdisp + -1 * lambday * node1.ydisp + lambdax * node2.xdisp + lambday * node2.ydisp
+        q = bar.A * bar.E / bar.Length() * delta
+        bar.axial_load = q
+    # Compute member forces for all bars using equation 14-23
+    pass
+    
+# compute the normal stresses
+def ComputeNormalStresses(bars):
+    # COMPLETE THIS FUNCTION
+    for bar in bars:
+        bar.normal_stress = bar.axial_load / bar.A
+    # Compute normal stress for all bars
+    pass
+
+# compute the critical buckling load of a member
+def ComputeBucklingLoad(bars):
+    # COMPLETE THIS FUNCTION
+    for bar in bars:
+        L = bar.Length()
+
+        # choose weak axis
+        I = min(bar.It, bar.Iu)
+
+        bar.buckling_load = (math.pi ** 2 * bar.E * I) / (L ** 2)
+    # Compute critical buckling load for all bars
+    pass

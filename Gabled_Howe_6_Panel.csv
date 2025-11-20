@@ -15,8 +15,8 @@ Index,XCoord(ft),YCoord(ft),Constraint,XForce(kip),YForce(kip),BeamIdxs,
 Beams,,,,,,,
 Index,Start Node,End Node,Section Type,Material,Sdir,Tdir,Udir
 0,0,7,W Shapes:W12X26,Steel ASTM A36,[-0.         0.9486833  0.       ],[-0.3 -0.   0.9],[0.9486833  0.         0.31622777]
-1,7,5,W Shapes:W6X9,Steel ASTM A36,[-0.         0.9486833  0.       ],[-0.3 -0.   0.9],[0.9486833  0.         0.31622777]
-2,5,1,W Shapes:W5X16,Steel ASTM A36,[-0.         0.9486833  0.       ],[-0.3 -0.   0.9],[0.9486833  0.         0.31622777]
+1,7,5,W Shapes:W12X26,Steel ASTM A36,[-0.         0.9486833  0.       ],[-0.3 -0.   0.9],[0.9486833  0.         0.31622777]
+2,5,1,W Shapes:W12X26,Steel ASTM A36,[-0.         0.9486833  0.       ],[-0.3 -0.   0.9],[0.9486833  0.         0.31622777]
 3,0,6,W Shapes:W12X26,Steel ASTM A36,[-0.  1.  0.],[ 0. -0.  1.],[1. 0. 0.]
 4,6,4,W Shapes:W12X26,Steel ASTM A36,[-0.  1.  0.],[ 0. -0.  1.],[1. 0. 0.]
 5,4,3,W Shapes:W12X26,Steel ASTM A36,[-0.  1.  0.],[ 0. -0.  1.],[1. 0. 0.]

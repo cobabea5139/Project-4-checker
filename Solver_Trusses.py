@@ -63,7 +63,7 @@ def ComputeBucklingLoad(bars):
         L = bar.Length()
 
         # choose weak axis
-        I = min(bar.It, bar.Iu)
+        I = max(bar.It, bar.Iu)
 
         bar.buckling_load = (math.pi ** 2 * bar.E * I) / (L ** 2)
     # Compute critical buckling load for all bars
